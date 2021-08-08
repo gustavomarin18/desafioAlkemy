@@ -6,6 +6,7 @@ const path = require('path');
 const puerto = process.env.PORT;
 
 const homeRouter = require('./routes/homeRouter');
+const apiMovementsRouter = require('./routes/api/apiMovementRouter');
 
 app.set('views', path.resolve(__dirname, './views'));
 app.set ('view engine', 'ejs');
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use('/', homeRouter);
+app.use('/api/movements',apiMovementsRouter);
 
 
 
