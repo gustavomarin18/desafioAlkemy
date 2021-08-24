@@ -6,6 +6,9 @@ const apiMovementController = require('../../controller/api/apiMovementControlle
 
 router.get('/',apiMovementController.list);
 router.get('/:id',apiMovementController.show);
+router.post('/',apiMovementController.store);
+router.delete('/:id',apiMovementController.delete);
+
 
 
 

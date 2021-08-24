@@ -1,5 +1,6 @@
 const { Movement } = require('../../database/models');
 const { Op } = require("sequelize");
+const movement = require('../../database/models/movement');
 
 
 
@@ -29,6 +30,46 @@ data: movement,
 status: 200
 })
 })},
+store: (req,res)=>{
+    Movement.create((req.body),
+    {attributes: ['id','concept','amount','date','type']}
+    
+)
+.then (movement =>{
+return res.status(200).json ({
+data: movement,
+status: 200,
+created: "ok"
+})
+})},
+
+delete: (req, res)=>
+Movement.destroy(
+    {
+where: {
+id: req.params.id}
+}
+
+)
+.then (response =>{
+return res.json(response)
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
