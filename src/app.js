@@ -1,5 +1,6 @@
 const express = require('express');
 const methodOverride = require ('method-override')
+const cors = require('cors')
 
 const app = express();
 const path = require('path');
@@ -13,6 +14,7 @@ app.set ('view engine', 'ejs');
 
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
 
