@@ -1,8 +1,8 @@
 const { Movement } = require('../../database/models');
 const DB = require('../../database/models')
 const Op = DB.Sequelize.Op;
-const movement = require('../../database/models/movement');
 
+const movement = require('../../database/models/movement');
 
 
 
