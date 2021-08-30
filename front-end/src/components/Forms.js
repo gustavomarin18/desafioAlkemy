@@ -2,31 +2,61 @@ import React, {Fragment, useState} from 'react'
 
 const Forms = () => {
 
+
     const [data, setDatos] = useState ({
-        concept: "",
-        amount: "",
+        concept : '',
+        amount: ''
+     
+     
 
 
 
     })
     const handleInputChange = (e) =>{
-
-       
+        
         setDatos ({
             ...data,
             [e.target.name] : e.target.value
-
+         
 
         })
-
+        {console.log ("a verrrr")
+        console.log (data.concept)}
     }
     const enviarDatos = (e)=>{
         e.preventDefault();
-        console.log (data.concept + " " + data.amount)
+     
+
+     
+        
+        var url = 'http://localhost:3000/api/movements';
+var data = {concept: "gustavo"
+};
+
+fetch(url, {
+  method: 'POST', // or 'PUT'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers:{
+    'Content-Type': 'application/json'
+  }
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
 
 
 
     }
+    
+
+
+
+
+
+
+    
+    
+    
+    
 
 
 
