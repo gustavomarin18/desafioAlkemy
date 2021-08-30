@@ -20,8 +20,7 @@ const Forms = () => {
          
 
         })
-        {console.log ("a verrrr")
-        console.log (data.concept)}
+    
     }
     const enviarDatos = (e)=>{
         e.preventDefault();
@@ -30,7 +29,8 @@ const Forms = () => {
      
         
         var url = 'http://localhost:3000/api/movements';
-var data = {concept: "gustavo"
+var data = {concept: "ultima prueba",
+amount: 5000
 };
 
 fetch(url, {
