@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Movement.init({
-    concept: { type: DataTypes.STRING, allowNull: false },
-    amount:{ type: DataTypes.INTEGER, allowNull: false },
+    concept: { type: DataTypes.STRING, allowNull: true },
+    amount:{ type: DataTypes.INTEGER, allowNull: true },
     date: DataTypes.DATE,
-    type: { type: DataTypes.STRING, allowNull: false },
+    type: { type: DataTypes.STRING, allowNull: true },
   }, {
     sequelize,
     modelName: 'Movement',

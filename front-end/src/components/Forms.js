@@ -1,11 +1,13 @@
-import React, {Fragment, useState} from 'react'
+/*import React, {Fragment, useState} from 'react'
 
 const Forms = () => {
 
 
     const [data, setDatos] = useState ({
         concept : '',
-        amount: ''
+        amount: '',
+        date: '',
+        type: ''
      
      
 
@@ -23,29 +25,23 @@ const Forms = () => {
     
     }
     const enviarDatos = (e)=>{
-        e.preventDefault();
-     
-
-     
-        
-        var url = 'http://localhost:3000/api/movements';
-var data = {concept: "ultima prueba",
-amount: 5000
-};
-
-fetch(url, {
-  method: 'POST', // or 'PUT'
-  body: JSON.stringify(data), // data can be `string` or {object}!
-  headers:{
-    'Content-Type': 'application/json'
-  }
-}).then(res => res.json())
-.catch(error => console.error('Error:', error))
-.then(response => console.log('Success:', response));
-
-
-
+        e.preventDefault()
+        console.log ("enviando datos")
+        console.log (data.concept + "" + data.amount)
+ 
+    
     }
+    
+
+
+
+
+
+        
+
+
+
+
     
 
 
@@ -84,15 +80,34 @@ fetch(url, {
                 className= "form-control"
                 type= "number"
                 name= "amount"
-                onChange = {handleInputChange}
-                
-                ></input>
+                onChange = {handleInputChange}>
+
+                </input>
                 </div>
+               
+                <div className= "col-md-3">
+                <input
+                placeholder= "ingrese dia de la compra"
+                className= "form-control"
+                type= "date"
+                name= "date"
+                onChange = {handleInputChange}></input>
+                </div>
+
+                
+               
+                
+                
+                
+                
+                
+                
+                
                 <div className= "col-md-3">
                 <button className= "btn btn-primary" type= "submit">Enviar</button>
                 </div>
                </form>
-               <h3>{data.concept} - {data.amount}</h3>
+               <h3>{data.concept} - {data.amount} {data.date} {data.type}</h3>
 
 
 
@@ -104,4 +119,97 @@ fetch(url, {
 }
 
 
+export default Forms;*/
+import React, { useState, } from "react";
+
+function Forms() {
+  
+  const [inputs, setInputs] = useState({});
+
+  //Get Method
+
+
+  //Post Method
+  const apiPost = async () => {
+    await fetch("http://localhost:3000/api/movements/", {
+      method: "POST",
+      body: JSON.stringify({
+        concept: inputs.concept,
+        amount: inputs.amount,
+        date: inputs.date,
+        type: inputs.type,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  };
+
+  const handleChange = (event) => {
+    event.persist();
+    setInputs((inputs) => ({
+      ...inputs,
+
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    apiPost();
+    console.log(inputs);
+  };
+
+  //   useEffect(() => {
+  //     apiGet();
+  //   }, []);
+
+  return (
+    <div>
+     
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="concept"
+            placeholder="concepto"
+            onChange={handleChange}
+          />{" "}
+          <br />
+          <input
+            type="number"
+            name="amount"
+            placeholder="amount"
+            onChange={handleChange}
+          />
+          <br />
+          <input
+            type="date"
+            name="date"
+            placeholder="date"
+            onChange={handleChange}
+          />
+          <br /> <input
+            type="text"
+            name="type"
+            placeholder="operación"
+            onChange={handleChange}
+          /> <br /> 
+          
+
+
+
+
+
+          <input type="submit" value="enviar" onChange={handleChange} />
+        </form>
+      </div>
+    </div>
+  );
+}
+
 export default Forms;
+
+

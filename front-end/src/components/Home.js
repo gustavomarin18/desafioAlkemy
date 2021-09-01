@@ -58,7 +58,7 @@ export const Home = ({item}) => {
                 {spending.map( element => <li key={element.id}>{element}</li> ) }
             </ul>
             <ul>Ingresos:
-                {income.map( element => <li key={element && element.id}>{element}</li> ) }
+                {income.map( element => <li key={ element.id}>{element}</li> ) }
             </ul>
         </div>
     )
