@@ -1,132 +1,13 @@
-/*import React, {Fragment, useState} from 'react'
 
-const Forms = () => {
-
-
-    const [data, setDatos] = useState ({
-        concept : '',
-        amount: '',
-        date: '',
-        type: ''
-     
-     
-
-
-
-    })
-    const handleInputChange = (e) =>{
-        
-        setDatos ({
-            ...data,
-            [e.target.name] : e.target.value
-         
-
-        })
-    
-    }
-    const enviarDatos = (e)=>{
-        e.preventDefault()
-        console.log ("enviando datos")
-        console.log (data.concept + "" + data.amount)
- 
-    
-    }
-    
-
-
-
-
-
-        
-
-
-
-
-    
-
-
-
-
-
-
-    
-    
-    
-    
-
-
-
-
-
-
-    return (
-     <Fragment>
-            <h1>Formularios</h1>
-            <form className= "row" onSubmit={enviarDatos}>
-                <div className= "col-md-3">
-                <input 
-                placeholder = "ingrese concepto"
-                className= "form-control"
-                type= "text"
-                name= "concept"
-                onChange = {handleInputChange}
-                
-                >
-             </input>
-                </div>
-                <div className= "col-md-3">
-                <input
-                placeholder= "ingrese monto"
-                className= "form-control"
-                type= "number"
-                name= "amount"
-                onChange = {handleInputChange}>
-
-                </input>
-                </div>
-               
-                <div className= "col-md-3">
-                <input
-                placeholder= "ingrese dia de la compra"
-                className= "form-control"
-                type= "date"
-                name= "date"
-                onChange = {handleInputChange}></input>
-                </div>
-
-                
-               
-                
-                
-                
-                
-                
-                
-                
-                <div className= "col-md-3">
-                <button className= "btn btn-primary" type= "submit">Enviar</button>
-                </div>
-               </form>
-               <h3>{data.concept} - {data.amount} {data.date} {data.type}</h3>
-
-
-
-
-
-
-            </Fragment>
-    )
-}
-
-
-export default Forms;*/
 import React, { useState, } from "react";
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 
 function Forms() {
   
   const [inputs, setInputs] = useState({});
 
-  //Get Method
+  
 
 
   //Post Method
@@ -168,42 +49,63 @@ function Forms() {
 
   return (
     <div>
-     
+     <h1>Ingrese su operación</h1>
       <div>
         <form onSubmit={handleSubmit}>
-          <input
+        <div class="form-floating mb-3">
+          <input 
+          class="form-control" id="floatingInput"
             type="text"
             name="concept"
             placeholder="concepto"
             onChange={handleChange}
           />{" "}
+            <label for="floatingInput">Concepto</label>
+          </div>
           <br />
+          <div class="form-floating mb-3">
           <input
+          class="form-control" id="floatingInput"
             type="number"
             name="amount"
             placeholder="amount"
             onChange={handleChange}
           />
+          <label for="floatingInput">Monto</label>
+          </div>
           <br />
+          <div class="form-floating mb-3">
           <input
+          class="form-control" id="floatingInput"
             type="date"
             name="date"
             placeholder="date"
             onChange={handleChange}
           />
-          <br /> <input
-            type="text"
-            name="type"
-            placeholder="operación"
-            onChange={handleChange}
-          /> <br /> 
+          <label for="floatingInput">fecha</label>
+          </div>
+          <br /> 
+          
+         
+       
+        <Label for="exampleSelect">Tipo de operación</Label>
+        <Input class="form-control" type="select"  name="type" id="floatingInput" onChange={handleChange}>
+          <option>ingreso</option>
+          <option>egreso</option>
+       
+        </Input>
+        <br /> 
+ 
+
+
+  
           
 
 
 
 
 
-          <input type="submit" value="enviar" onChange={handleChange} />
+          <input class="btn btn-primary" type="submit" value="enviar" onChange={handleChange} />
         </form>
       </div>
     </div>

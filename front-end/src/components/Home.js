@@ -1,4 +1,5 @@
 import React from 'react'
+import "../css/home.css"
 
 export const Home = ({item}) => {
 
@@ -11,7 +12,7 @@ export const Home = ({item}) => {
 
     item.forEach(function (item) {
         if(item.type === "egreso") {
-            spendingValue.push(item.amount);
+            spendingValue.push(item.amount,);
         }else{
             incomeValue.push(item.amount);
         }
@@ -50,15 +51,19 @@ export const Home = ({item}) => {
 
     return (
         <div>
-            <h3>Saldo: ${total}</h3>
-            <ul>
-            {ultimos.map( element => <li key={element.id}>{`${element.type}: ${element.concept} ${element.amount} `}</li> ) }
+  
+            
+            <h3  >Balance actual: ${total}</h3>
+            <h4>Ultimas 10 operaciones registradas</h4>
+            <ul class="list-group" >
+            {ultimos.map( element => <li class="list-group-item list-group-item-primary" key={ element.id}>{`${element.type}: ${element.concept} ${element.amount} `}</li> ) }
             </ul>
-            <ul>Egresos:
-                {spending.map( element => <li key={element.id}>{element}</li> ) }
+            <h3>Operaciones registradas según su tipo</h3>
+            <ul class="list-group" >Egresos:
+                {spending.map( element => <li class="list-group-item list-group-item-warning" key={ element.id}>{element}</li> ) }
             </ul>
             <ul>Ingresos:
-                {income.map( element => <li key={ element.id}>{element}</li> ) }
+                {income.map( element => <li class="list-group-item list-group-item-success"  key={ element.id}>{element}</li> ) }
             </ul>
         </div>
     )
