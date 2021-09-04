@@ -60,12 +60,12 @@ return res.json(response)
 }),
 search: (req, res)=>
 DB.Movement
-         .findAll ({
-             where:{
+    .findAll ({
+        where:{
                 concept: {[Op.like]: '%' + req.query.keyword + '%'} }
- })
-         .then (movements=>{
-             if (movements.length > 0){
+})
+    .then (movements=>{
+        if (movements.length > 0){
      return res.status (200).json(movements);}
      return res.status (200).json ("No encontramos conceptos con ese nombre")
 

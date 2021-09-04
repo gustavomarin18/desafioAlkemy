@@ -16,10 +16,14 @@ export const Container = () => {
           await fetch('http://localhost:3000/api/movements/')
             .then(response => response.json())
             .then(receivedData => setItem(receivedData.data))
+            console.log ("prueba id")
+            console.log (item.id)
          
 
            
       };
+    
+    
       
 
     

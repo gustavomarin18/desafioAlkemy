@@ -4,7 +4,7 @@ import "../css/home.css"
 export const Home = ({item}) => {
 
     const ultimos = item.slice(item.length -10)
-    
+   
     const spending = [];
     const income = [];
     const spendingValue = [];
@@ -24,7 +24,7 @@ export const Home = ({item}) => {
             income.push(item.concept);
         }
     });
-
+  
 
 
 
@@ -38,6 +38,7 @@ export const Home = ({item}) => {
     const spendingTotal = spendingValue.reduce((a, b) => a + b, 0);
     const incomeTotal = incomeValue.reduce((a, b) => a + b, 0);
     const total = incomeTotal - spendingTotal
+
     
     console.log(income)
     console.log(spending)
@@ -52,18 +53,19 @@ export const Home = ({item}) => {
     return (
         <div>
   
-            
-            <h3  >Balance actual: ${total}</h3>
+            <div className= "cont_balance">
+            <h3 className= "Balance_home"  >Balance actual: ${total}</h3>
+            </div>
             <h4>Ultimas 10 operaciones registradas</h4>
-            <ul class="list-group" >
-            {ultimos.map( element => <li class="list-group-item list-group-item-primary" key={ element.id}>{`${element.type}: ${element.concept} ${element.amount} `}</li> ) }
+            <ul className="list-group" >
+            {ultimos.map( element => <li className="list-group-item list-group-item-primary" key={ element.id}>{`${element.type}: ${element.concept} ${element.amount} `}</li> ) }
             </ul>
             <h3>Operaciones registradas según su tipo</h3>
-            <ul class="list-group" >Egresos:
-                {spending.map( element => <li class="list-group-item list-group-item-warning" key={ element.id}>{element}</li> ) }
+            <ul className="list-group" >Egresos:
+                {spending.map( element => <li className="list-group-item list-group-item-warning" key={ element.id}>{element}</li> ) }
             </ul>
             <ul>Ingresos:
-                {income.map( element => <li class="list-group-item list-group-item-success"  key={ element.id}>{element}</li> ) }
+                {income.map( element => <li className="list-group-item list-group-item-success"  key={ element.id}>{element}</li> ) }
             </ul>
         </div>
     )
